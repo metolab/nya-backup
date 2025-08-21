@@ -1,0 +1,35 @@
+version: 2
+
+includes:
+  - "conf/*.yaml"
+
+global:
+  initialize: true
+
+profiles:
+  base:
+    initialize: true
+    password-file: /etc/resticprofile/local.key
+    
+    retention:
+      after-backup: true
+      keep-last: 7
+      keep-hourly: 24
+      keep-daily: 7
+      keep-weekly: 4
+      keep-monthly: 12
+      keep-yearly: 3
+      
+    backup:
+      schedule: '4,16:00' # only run at 4:00 and 16:00
+      schedule-permission: system
+      schedule-log: /tmp/resticprofile-backup.log
+      schedule-lock-mode: fail
+      no-error-on-warning: true
+      exclude:
+        - "**/.bun"
+        - "**/.cache"
+        - "**/.npm"
+        - "**/.nvm"
+        - "**/.yarn"
+        - "**/node_modules/*"
