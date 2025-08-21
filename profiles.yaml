@@ -7,7 +7,7 @@ global:
   initialize: true
 
 profiles:
-  base:
+  _base:
     initialize: true
     password-file: /etc/resticprofile/local.key
     
