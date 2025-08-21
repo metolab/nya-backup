@@ -22,6 +22,6 @@ echo "Installation completed successfully!"
 # Generate key if it doesn't exist
 if [ ! -f "local.key" ]; then
     echo "Generating encryption key..."
-    resticprofile generate --random-key > local.key
+    resticprofile generate --random-key 36 > local.key
     echo "Key generated and saved to local.key"
 fi
